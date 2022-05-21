@@ -24,7 +24,7 @@
       />
       <button>Generate</button>
     </div>
-    <p class="error-msg">Here is an error message</p>
+    <p class="error-msg" *ngIf="errorMessage">{{ errorMessage }}</p>
   </div>
 
   <div class="teams-container">
