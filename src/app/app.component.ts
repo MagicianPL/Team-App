@@ -10,7 +10,8 @@ export class AppComponent {
   members: string[] = [];
 
   addMember() {
-    console.log("Clicked");
+    this.members.push(this.newMemberName);
+    this.newMemberName = "";
   };
 
   handleInputChange(member: string) {

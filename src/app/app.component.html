@@ -3,8 +3,7 @@
     <h1>Team Generator</h1>
 
     <ul class="list">
-      <li>Jan Kowalski</li>
-      <li>Janina Kowalska</li>
+      <li *ngFor="let member of members">{{ member }}</li>
     </ul>
 
     <div class="add-members-container">
@@ -13,6 +12,7 @@
         type="text"
         placeholder="Name"
         (input)="handleInputChange(memberInput.value)"
+        [value]="newMemberName"
       />
       <button (click)="addMember()">Add</button>
     </div>
