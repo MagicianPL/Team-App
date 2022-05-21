@@ -4,14 +4,17 @@
 
     <ul class="list">
       <li>Jan Kowalski</li>
+      <li>Janina Kowalska</li>
     </ul>
 
     <div class="add-members-container">
       <input
+        #memberInput
         type="text"
         placeholder="Name"
+        (input)="handleInputChange(memberInput.value)"
       />
-      <button>Add</button>
+      <button (click)="addMember()">Add</button>
     </div>
 
     <div class="input-container">

@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'teamapp';
+  newMemberName = "";
+  members: string[] = [];
+
+  addMember() {
+    console.log("Clicked");
+  };
+
+  handleInputChange(member: string) {
+    this.newMemberName = member;
+    console.log(this.newMemberName);
+  }
 }
