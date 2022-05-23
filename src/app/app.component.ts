@@ -10,7 +10,7 @@ export class AppComponent {
   members: string[] = ["1", "2", "3", "4", "5", "6", "7", "8"];
   errorMessage = "";
   numOfTeams="";
-  teams: any = [];
+  teams: string[][] = [];
 
   addMember() {
     if(!this.newMemberName.trim()) {
@@ -31,7 +31,7 @@ export class AppComponent {
   generateTeams() {
     //Clearing
     this.teams = [];
-    
+
     //Validation
     if(!this.numOfTeams.toString().trim()) return this.errorMessage = "Number of teams cannot be empty!";
     if(+this.numOfTeams > this.members.length) return this.errorMessage = "Number of teams is too big.";
@@ -41,15 +41,16 @@ export class AppComponent {
       this.teams.push([]);
     };
     //Take random member and push them to the teams
+    const membersCopy = [...this.members];
     do {
       for(let i = 0; i < this.teams.length; i++) {
-        const randomIndexOfNewMember = Math.floor(Math.random() * this.members.length);
-        const removedMember = this.members.splice(randomIndexOfNewMember, 1);
-        if(removedMember[0]) {
-          this.teams[i].push(removedMember[0]);
+        const randomIndexOfNewMember = Math.floor(Math.random() * membersCopy.length);
+        const removedMember = membersCopy.splice(randomIndexOfNewMember, 1)[0];
+        if(removedMember) {
+          this.teams[i].push(removedMember);
         }
       }
-    } while(this.members.length > 0);
+    } while(membersCopy.length > 0);
     return;
   };
 }
