@@ -29,6 +29,9 @@ export class AppComponent {
   }
 
   generateTeams() {
+    //Clearing
+    this.teams = [];
+    
     //Validation
     if(!this.numOfTeams.toString().trim()) return this.errorMessage = "Number of teams cannot be empty!";
     if(+this.numOfTeams > this.members.length) return this.errorMessage = "Number of teams is too big.";
