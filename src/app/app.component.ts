@@ -9,12 +9,15 @@ export class AppComponent {
   newMemberName = "";
   members: string[] = [];
   errorMessage = "";
+  numOfTeams="";
 
   addMember() {
-    if(!this.newMemberName) {
+    if(!this.newMemberName.trim()) {
       this.errorMessage = "Name cannot be empty.";
       return;
     };
+    
+    this.errorMessage = "";
 
     this.members.push(this.newMemberName);
     this.newMemberName = "";
@@ -22,6 +25,12 @@ export class AppComponent {
 
   handleInputChange(member: string) {
     this.newMemberName = member;
-    console.log(this.newMemberName);
   }
+
+  generateTeams() {
+    if(!this.numOfTeams.trim()) return this.errorMessage = "Number of teams cannot be empty!";
+    if(+this.numOfTeams > this.members.length) return this.errorMessage = "Number of teams is too big.";
+
+    
+  };
 }
