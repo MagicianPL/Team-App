@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ignoreElements } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -35,6 +36,7 @@ export class AppComponent {
     //Validation
     if(!this.numOfTeams.toString().trim()) return this.errorMessage = "Number of teams cannot be empty!";
     if(+this.numOfTeams > this.members.length) return this.errorMessage = "Number of teams is too big.";
+    if(+this.numOfTeams < 1 || !Number.isInteger(+this.numOfTeams)) return this.errorMessage = "Invalid number of teams.";
 
     //Push empty arrays to teams
     for(let i = 0; i < +this.numOfTeams; i++) {
@@ -51,6 +53,10 @@ export class AppComponent {
         }
       }
     } while(membersCopy.length > 0);
+
+    this.numOfTeams = "";
+    this.members = [];
+    this.errorMessage = "";
     return;
   };
 }
