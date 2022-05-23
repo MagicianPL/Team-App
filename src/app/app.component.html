@@ -23,7 +23,7 @@
         placeholder="# of teams"
         [(ngModel)]="numOfTeams"
       />
-      <button>Generate</button>
+      <button (click)="generateTeams()">Generate</button>
     </div>
     <p class="error-msg" *ngIf="errorMessage">{{ errorMessage }}</p>
   </div>
